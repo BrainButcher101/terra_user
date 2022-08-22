@@ -6,7 +6,7 @@ locals {
 
 resource "aws_iam_user" "default" {
   name = "${var.name}${var.postfix ? "Account" : ""}"
-  tags = var.tags
+  
 }
 
 resource "aws_iam_access_key" "default" {
@@ -42,7 +42,7 @@ resource "aws_ssm_parameter" "access_key_id" {
   type   = "SecureString"
   value  = aws_iam_access_key.default.id
   key_id = var.kms_key_id
-  tags   = var.tags
+  
 }
 
 resource "aws_ssm_parameter" "secret_access_key" {
@@ -50,7 +50,7 @@ resource "aws_ssm_parameter" "secret_access_key" {
   type   = "SecureString"
   value  = aws_iam_access_key.default.secret
   key_id = var.kms_key_id
-  tags   = var.tags
+  
 }
 
 resource "aws_ssm_parameter" "ses_smtp_password_v4" {
@@ -59,5 +59,5 @@ resource "aws_ssm_parameter" "ses_smtp_password_v4" {
   type   = "SecureString"
   value  = aws_iam_access_key.default.ses_smtp_password_v4
   key_id = var.kms_key_id
-  tags   = var.tags
+  
 }

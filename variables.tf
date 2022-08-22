@@ -1,3 +1,5 @@
+
+
 variable "name" {
   type        = string
   description = "The name of the user"
@@ -43,9 +45,4 @@ variable "ssm_ses_smtp_password_v4" {
   type        = bool
   default     = false
   description = "Store the user's SES SMTP password in the SSM Parameter Store"
-}
-
-variable "tags" {
-  type        = map(string)
-  description = "A mapping of tags to assign to the user"
 }
